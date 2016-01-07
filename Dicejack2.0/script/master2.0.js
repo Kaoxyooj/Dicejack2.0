@@ -6,18 +6,16 @@ function userInput(){
      inputCheck(namePrompt)
     return namePrompt;
 }
+
 function inputCheck(namePrompt){
-        if (namePrompt.length > 0)
-        	{return namePrompt;
-        } else if (namePrompt.length === 0)
-            {userInput();};	
+        if (namePrompt.length <= 0)
+            {userInput()	
+        }else {return namePrompt;}
 }
 
-function randomDiceRoll()
-{
+function randomDiceRoll(){
 	var num=Math.floor((Math.random() * 10) + 1);
 	return num;
-
 }
 
 function dealersTurn(dealer){
@@ -43,53 +41,74 @@ function rePlay(){
         };
 }
 
-function main(){
-var player;
-var player1;
-var dealer;
-var dealerTotalRoll;
-var hit;
-var rollAgainMessage;
-var total;
-
-player1 = userInput();
-rollAgainMessage = "Would you like to roll again? yes or no ";
-
-player = 0
-dealerTotalRoll = 0
-dealer = 0
-
-
+function playerTurn(player,hit,rollAgainMessage,player1){
+    var total;
+	var hitCount;
+	hitCount = 0;
 	total=randomDiceRoll()+randomDiceRoll();
 	console.log("Your first two rolls come out to " + total);
 	player = total;
 
 	while (player < 20){
 		hit = prompt(rollAgainMessage);
-	    if (hit==="yes")
-	    {
+	    if (hit==="yes"){	 
+	    	hitCount += 1;	    	
+	    	if (hitCount === 5) {
+	    		console.log(player1, "has rolled 5 times", player1, " wins!");
+	    		rePlay();
+	    	}
 	    	player += randomDiceRoll();
-		console.log(player1 ,"now has", player);	    	
-	    }
+		console.log(player1 ,"now has", player);
+		if (player > 20) {
+	console.log(player1, " bust with", player, "!  You LOSE!");
+	rePlay();	    	
+	    }}
 	    if (hit==="no")
 	    {
 	    	console.log(player1, "stays with ",player);
 	    	break;
 	    }}
+	    return player;
+	}
+
+function winner(player,player1,dealer){
 if (player > 20) {
 	console.log(player1, " bust with", player, "!  You LOSE!");
-	rePlay()
+	rePlay();
 	    } else	{dealer = dealersTurn(dealer);
 	    	};
 
 	    	if (dealer >= player){
 	    		console.log("Dealer wins!");
-	    		rePlay()
-	    	}else if(player > dealer && player < 21)
-	    		{console.log("YOU WIN!");
-	    		rePlay()
-};
+	    		rePlay();
+	    	}else if(player > dealer && player < 21) {
+	    		console.log("YOU WIN!");
+	    		rePlay();
+            };	
 }
 
-main();
+function main(){
+console.clear()
+var player;
+var player1;
+var dealer;
+var dealerTotalRoll;
+var hit;
+var rollAgainMessage;
+var checkWinner;
+
+player1 = userInput();
+rollAgainMessage = "Would you like to roll again? yes or no ";
+
+player = 0;
+dealerTotalRoll = 0;
+dealer = 0;
+
+console.log(player1, "'s turn!");
+player = playerTurn(player,hit,rollAgainMessage,player1);
+console.log("Dealers turn!");
+dealer = dealersTurn(dealer);
+checkWinner= winner(player,player1,dealer);
+}
+
 

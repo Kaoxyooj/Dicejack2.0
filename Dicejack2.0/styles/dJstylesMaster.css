@@ -1,0 +1,87 @@
+body{
+    background-color: #CCC;
+}
+
+.header{
+    position:relative;
+    top:0px;
+    left:0px;
+    width:100%;
+    color:#CCC;
+    background:#33ff33 ;
+    padding:50px;
+    height: 20px;
+    text-align: center;
+    color: black;
+    font-size: 70px;
+    border-bottom: 2px solid black;
+    text-shadow: 2px 2px white;
+
+
+}
+.rules{
+    color:#0d0d0d ;
+    font-size: 30px;
+    
+
+
+}
+.gamerules{
+    font-size: 67px;
+    text-decoration: underline;
+
+}
+.dice{
+    float: right;
+    
+    
+}
+.dice2{
+    float: right;
+    opacity: .3;
+    padding-right: 100px;
+
+}body{
+    background-color: #CCC;
+}
+
+.header{
+    position:relative;
+    top:0px;
+    left:0px;
+    width:100%;
+    color:#CCC;
+    background:#33ff33 ;
+    padding:50px;
+    height: 20px;
+    text-align: center;
+    color: black;
+    font-size: 70px;
+    border-bottom: 2px solid black;
+    text-shadow: 2px 2px white;
+
+
+}
+.rules{
+    color:#0d0d0d ;
+    font-size: 30px;
+    
+
+
+}
+.gamerules{
+    font-size: 67px;
+    text-decoration: underline;
+
+}
+.dice{
+    float: right;
+    
+    
+}
+.dice2{
+    float: right;
+    opacity: .3;
+    padding-right: 100px;
+
+}
