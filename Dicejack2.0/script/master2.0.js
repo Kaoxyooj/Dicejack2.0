@@ -1,16 +1,20 @@
 "use strict";
 
 function userInput(){
-	var namePrompt;
+	var namePrompt, inputChecker;
 	namePrompt = prompt ("Enter your name", "");
-     inputCheck(namePrompt)
-    return namePrompt;
+    inputChecker = inputCheck(namePrompt);
+
+    return inputChecker;
 }
 
 function inputCheck(namePrompt){
+	var name;
         if (namePrompt.length <= 0)
-            {userInput()	
+            {name = userInput();
+            return name;	
         }else {return namePrompt;}
+
 }
 
 function randomDiceRoll(){
@@ -37,8 +41,11 @@ function rePlay(){
         if (play === "yes") {
         	main()
         }else if (play === "no"){
+
+        	console.clear();
         	console.log("Thank you for playing ");
-        };
+
+        } 
 }
 
 function playerTurn(player,hit,rollAgainMessage,player1){
@@ -60,8 +67,8 @@ function playerTurn(player,hit,rollAgainMessage,player1){
 	    	player += randomDiceRoll();
 		console.log(player1 ,"now has", player);
 		if (player > 20) {
-	console.log(player1, " bust with", player, "!  You LOSE!");
-	rePlay();	    	
+	        console.log(player1, " bust with", player, "!  You LOSE!");
+	        rePlay();	    	
 	    }}
 	    if (hit==="no")
 	    {
@@ -104,11 +111,24 @@ player = 0;
 dealerTotalRoll = 0;
 dealer = 0;
 
+console.log("      ________              WELCOME                                                                    ________         ");     
+console.log("    \/\\  *   *  \\                  TO                                                                 \/\\  *   *  \\    ");          
+console.log("  \/ *  \\   *   * \\                   DICEJACK!                                                     \/ *  \\   *   * \\  ");       
+console.log("\/    *   \\_________\\                      GOODLUCK                                               \/    *   \\_________\\");         
+console.log(" \\       \/*     * \/                               WITH                                            \\       \/*     * \/ ");        
+console.log("   \\ * \/   *    \/                                     YOUR                                          \\ * \/   *    \/   ");       
+console.log("     \\_*___*__\/                                             ROLLS!!                                   \\_*___*__\/       ");
+
+
 console.log(player1, "'s turn!");
 player = playerTurn(player,hit,rollAgainMessage,player1);
+
+if (player > 20){
+	return;
+}
+
 console.log("Dealers turn!");
 dealer = dealersTurn(dealer);
 checkWinner= winner(player,player1,dealer);
 }
-
 
